@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+/* #f15c44  
+#fef6e7
+*/
+
 @font-face {
   font-family: "Merriweather", serif;
   font-family: "Roboto", sans-serif;
@@ -23,7 +27,33 @@ p {
   font-family: Robot, sans-serif;
 }
 
+.top-container {
+  color: #fef6e7;
+  background-color: #f15c44;
+  padding: 1rem 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.top-container button {
+  cursor: pointer;
+  width: 20rem;
+  height: 3rem;
+  border-radius: 2rem;
+  background-color: #fef6e7;
+  border: none;
+  font-size: 1.2rem;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  transition: all 0.5s;
+}
+
+.top-container button:hover {
+  transform: scale(1.05);
+}
+
 .library-container {
+  background-color: #fef6e7;
   padding: 2rem;
   display: grid;
   gap: 20px;
@@ -34,7 +64,116 @@ p {
 }
 
 .book {
+  border-left: 0.5rem solid #f14c44;
   padding: 2rem;
   border-radius: 0.5rem;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  transition: all 0.5s;
+}
+
+.book:hover {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  transform: scale(1.05);
+}
+
+.form {
+  max-width: 400px;
+  margin: 50px auto;
+  background: #fff;
+  border-radius: 2px;
+  padding: 20px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+.form h1 {
+  display: block;
+  text-align: center;
+  padding: 0;
+  margin: 0px 0px 20px 0px;
+  color: #5c5c5c;
+  font-size: x-large;
+}
+.form ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.form li {
+  display: block;
+  padding: 9px;
+  border: 1px solid #dddddd;
+  margin-bottom: 30px;
+  border-radius: 3px;
+}
+.form li:last-child {
+  border: none;
+  margin-bottom: 0px;
+  text-align: center;
+}
+.form li > label {
+  display: block;
+  float: left;
+  margin-top: -19px;
+  background: #ffffff;
+  height: 14px;
+  padding: 2px 5px 2px 5px;
+  color: #b9b9b9;
+  font-size: 14px;
+  overflow: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.form input[type="text"],
+.form input[type="author"],
+.form input[type="number"],
+.form textarea,
+.form select {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  width: 100%;
+  display: block;
+  outline: none;
+  border: none;
+  height: 25px;
+  line-height: 25px;
+  font-size: 16px;
+  padding: 0;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+.form input[type="text"]:focus,
+.form input[type="date"]:focus,
+.form input[type="datetime"]:focus,
+.form input[type="author"]:focus,
+.form input[type="number"]:focus,
+.form input[type="search"]:focus,
+.form input[type="time"]:focus,
+.form input[type="url"]:focus,
+.form input[type="password"]:focus,
+.form textarea:focus,
+.form select:focus {
+}
+.form li > span {
+  background: #f3f3f3;
+  display: block;
+  padding: 3px;
+  margin: 0 -9px -9px -9px;
+  text-align: center;
+  color: #c0c0c0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px;
+}
+.form textarea {
+  resize: none;
+}
+.form input[type="submit"],
+.form input[type="button"] {
+  background: #f14c44;
+  border: none;
+  padding: 10px 20px 10px 20px;
+  border-radius: 3px;
+  color: #fef6e7;
+}
+.form input[type="submit"]:hover,
+.form input[type="button"]:hover {
+  background: #6b9fff;
+  color: #fff;
 }

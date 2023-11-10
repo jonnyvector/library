@@ -11,7 +11,43 @@
     <title>Library</title>
   </head>
   <body>
-    <h1>Library</h1>
+    <div class="top-container">
+      <h1>Library</h1>  
+      <button>Add Book</button>
+    </div>
+    <div class="modal">
+      <form class="form">
+        <ul>
+        <li>
+            <label for="title">Title</label>
+            <input type="text" name="title" maxlength="100">
+            <span>Title </span>
+        </li>
+        <li>
+            <label for="author">Author</label>
+            <input type="text" name="author" maxlength="100">
+            <span>Author</span>
+        </li>
+        <li>
+            <label for="pages">Pages</label>
+            <input type="text" name="pages" maxlength="100">
+            <span>Number of pages</span>
+        </li>
+        <li>
+          <label for="pages">Have you read this book?</label>
+            <label for="readStatus">Yes</label>
+            <input type="checkbox" name="read-status" maxlength="100">
+            <label for="readStatus">No</label>
+            <input type="checkbox" name="read-status" maxlength="100">
+            <label for="No">No</label>
+            <span>Number of pages</span>
+        </li>
+        <li>
+            <input type="submit" value="Send" >
+        </li>
+        </ul>
+        </form>
+    </div>
     <div class="library-container">
       </div>
     </div>
