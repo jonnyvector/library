@@ -47,6 +47,16 @@ addBookToLibrary(lordOfTheRings);
 addBookToLibrary(theHobbit);
 addBookToLibrary(breakfastOfChampions);
 addBookToLibrary(catsCradle);
+addBookToLibrary(catsCradle);
+addBookToLibrary(catsCradle);
+addBookToLibrary(catsCradle);
+addBookToLibrary(catsCradle);
+addBookToLibrary(catsCradle);
+addBookToLibrary(catsCradle);
+addBookToLibrary(catsCradle);
+addBookToLibrary(catsCradle);
+addBookToLibrary(catsCradle);
+addBookToLibrary(catsCradle);
 
 myLibrary.forEach((book) => {
   const bookContainer = document.createElement("div");
@@ -54,6 +64,7 @@ myLibrary.forEach((book) => {
   const author = document.createElement("p");
   const pages = document.createElement("p");
   const readStatus = document.createElement("button");
+  bookContainer.className = "book";
   title.textContent = book.title;
   author.textContent = book.author;
   pages.textContent = book.numPages;

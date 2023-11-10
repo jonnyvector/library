@@ -2,20 +2,39 @@
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: "Merriweather", serif;
+  font-family: "Roboto", sans-serif;
+}
+
 body {
   padding: 0;
   margin: 0;
 }
 
-h1 {
-  font-family: Arial, Helvetica, sans-serif;
-  text-align: center;
+h1,
+h2,
+h3 {
+  font-family: Merriweather, serif;
+  /* text-align: center; */
+}
+
+p {
+  font-family: Robot, sans-serif;
 }
 
 .library-container {
+  padding: 2rem;
   display: grid;
+  gap: 20px;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
   border: 1px solid black;
   height: 100vh;
+}
+
+.book {
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
