@@ -12,10 +12,9 @@ To facilitate this you will want to create the function that toggles a book’s 
 const libraryContainer = document.querySelector(".library-container");
 const author = document.getElementsByName("author")[0];
 const pages = document.getElementsByName("pages")[0];
-const readStatus = document.getElementsByName("read-status")[0];
+const readStatus = document.getElementsByName("read-status");
 const title = document.getElementsByName("title")[0];
 const submitButton = document.querySelector(".submit");
-console.log(submitButton);
 
 const myLibrary = [];
 
@@ -73,13 +72,14 @@ myLibrary.forEach((book) => {
 });
 
 submitButton.addEventListener("click", function (e) {
+  let status = "";
   e.preventDefault();
-  var newBook = new Book(
-    title.value,
-    author.value,
-    pages.value,
-    readStatus.value
-  );
+  for (let read of readStatus) {
+    if (read.checked) {
+      status = read.value;
+    }
+  }
+  var newBook = new Book(title.value, author.value, pages.value, status);
   addBookToLibrary(newBook);
   renderBook(newBook);
 });
