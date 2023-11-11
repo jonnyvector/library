@@ -13,17 +13,18 @@
   <body>
     <div class="top-container">
       <h1>Library</h1>  
-      <button>Add Book</button>
+      <button class="open-form">Add Book</button>
     </div>
     <div class="modal">
      <form class="form" action="submit">
+      <img src="/assets/window-close.svg" class="close-form" alt="close-icon">
       <div class="form-section">
         <label for="title">Title</label>
-        <input name="title" id="title" type="text">
+        <input  name="title" id="title" type="text" required>
       </div>
       <div class="form-section">
         <label for="author">Author</label>
-        <input name="author" type="text">
+        <input  name="author" type="text" required>
       </div>
       <div class="form-section">
         <label for="pages">Pages

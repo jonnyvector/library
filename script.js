@@ -15,6 +15,20 @@ const pages = document.getElementsByName("pages")[0];
 const readStatus = document.getElementsByName("read-status");
 const title = document.getElementsByName("title")[0];
 const submitButton = document.querySelector(".submit");
+const modal = document.querySelector(".modal");
+const openForm = document.querySelector(".open-form");
+const closeForm = document.querySelector(".close-form");
+console.log(modal, openForm);
+
+openForm.addEventListener("click", function () {
+  modal.style.display = "block";
+});
+
+console.log(closeForm);
+
+closeForm.addEventListener("click", function () {
+  modal.style.display = "none";
+});
 
 const myLibrary = [];
 
@@ -72,14 +86,28 @@ myLibrary.forEach((book) => {
 });
 
 submitButton.addEventListener("click", function (e) {
-  let status = "";
+  if (title.value === "") return;
+  if (author.value === "") return;
+  if (!/^[0-9]+$/.test(pages.value)) {
+    alert(
+      "Please only enter numeric characters for pages! (Allowed input:0-9)"
+    );
+  }
   e.preventDefault();
+  let status = "";
   for (let read of readStatus) {
     if (read.checked) {
       status = read.value;
     }
   }
+
   var newBook = new Book(title.value, author.value, pages.value, status);
   addBookToLibrary(newBook);
   renderBook(newBook);
+  title.value = "";
+  author.value = "";
+  pages.value = "";
+  readStatus[0].checked = false;
+  readStatus[1].checked = false;
+  modal.style.display = "none";
 });
