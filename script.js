@@ -10,10 +10,10 @@ To facilitate this you will want to create the function that toggles a book’s 
 */
 
 const libraryContainer = document.querySelector(".library-container");
-const author = document.getElementsByName("author");
-const pages = document.getElementsByName("pages");
-const readStatus = document.getElementsByName("read-status");
-const title = document.getElementsByName("title");
+const author = document.getElementsByName("author")[0];
+const pages = document.getElementsByName("pages")[0];
+const readStatus = document.getElementsByName("read-status")[0];
+const title = document.getElementsByName("title")[0];
 const submitButton = document.querySelector(".submit");
 console.log(submitButton);
 
@@ -49,18 +49,8 @@ addBookToLibrary(lordOfTheRings);
 addBookToLibrary(theHobbit);
 addBookToLibrary(breakfastOfChampions);
 addBookToLibrary(catsCradle);
-addBookToLibrary(catsCradle);
-addBookToLibrary(catsCradle);
-addBookToLibrary(catsCradle);
-addBookToLibrary(catsCradle);
-addBookToLibrary(catsCradle);
-addBookToLibrary(catsCradle);
-addBookToLibrary(catsCradle);
-addBookToLibrary(catsCradle);
-addBookToLibrary(catsCradle);
-addBookToLibrary(catsCradle);
 
-myLibrary.forEach((book) => {
+function renderBook(book) {
   const bookContainer = document.createElement("div");
   const title = document.createElement("h2");
   const author = document.createElement("p");
@@ -76,11 +66,20 @@ myLibrary.forEach((book) => {
   bookContainer.appendChild(author);
   bookContainer.appendChild(pages);
   bookContainer.appendChild(readStatus);
-});
+}
 
-console.log(title[0]);
+myLibrary.forEach((book) => {
+  renderBook(book);
+});
 
 submitButton.addEventListener("click", function (e) {
   e.preventDefault();
-  console.log(title[0].value);
+  var newBook = new Book(
+    title.value,
+    author.value,
+    pages.value,
+    readStatus.value
+  );
+  addBookToLibrary(newBook);
+  renderBook(newBook);
 });
