@@ -78,102 +78,54 @@ p {
 
 .form {
   max-width: 400px;
-  margin: 50px auto;
-  background: #fff;
-  border-radius: 2px;
-  padding: 20px;
-  font-family: Georgia, "Times New Roman", Times, serif;
+  margin: auto;
 }
-.form h1 {
+
+.form-section {
+  margin-bottom: 15px;
+}
+
+label {
   display: block;
-  text-align: center;
-  padding: 0;
-  margin: 0px 0px 20px 0px;
-  color: #5c5c5c;
-  font-size: x-large;
+  margin-bottom: 5px; /* Add some spacing between labels and inputs */
 }
-.form ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+
+input[type="text"] {
+  width: calc(100% - 10px); /* Adjust the width based on your needs */
+  padding: 5px;
 }
-.form li {
-  display: block;
-  padding: 9px;
-  border: 1px solid #dddddd;
-  margin-bottom: 30px;
-  border-radius: 3px;
+
+input[type="radio"] {
+  width: auto;
+  margin-right: 5px;
 }
-.form li:last-child {
-  border: none;
-  margin-bottom: 0px;
-  text-align: center;
+
+/* Clear the default radio button styles */
+input[type="radio"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: inline-block;
+  vertical-align: middle;
 }
-.form li > label {
-  display: block;
-  float: left;
-  margin-top: -19px;
-  background: #ffffff;
-  height: 14px;
-  padding: 2px 5px 2px 5px;
-  color: #b9b9b9;
-  font-size: 14px;
-  overflow: hidden;
-  font-family: Arial, Helvetica, sans-serif;
+
+/* Style the custom radio button */
+input[type="radio"]::before {
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border: 2px solid #333;
+  border-radius: 50%;
+  margin-right: 5px;
+  vertical-align: middle;
 }
-.form input[type="text"],
-.form input[type="author"],
-.form input[type="number"],
-.form textarea,
-.form select {
-  box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  width: 100%;
-  display: block;
-  outline: none;
-  border: none;
-  height: 25px;
-  line-height: 25px;
-  font-size: 16px;
-  padding: 0;
-  font-family: Georgia, "Times New Roman", Times, serif;
+
+/* Style the custom radio button when checked */
+input[type="radio"]:checked::before {
+  background-color: #333;
 }
-.form input[type="text"]:focus,
-.form input[type="date"]:focus,
-.form input[type="datetime"]:focus,
-.form input[type="author"]:focus,
-.form input[type="number"]:focus,
-.form input[type="search"]:focus,
-.form input[type="time"]:focus,
-.form input[type="url"]:focus,
-.form input[type="password"]:focus,
-.form textarea:focus,
-.form select:focus {
-}
-.form li > span {
-  background: #f3f3f3;
-  display: block;
-  padding: 3px;
-  margin: 0 -9px -9px -9px;
-  text-align: center;
-  color: #c0c0c0;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 11px;
-}
-.form textarea {
-  resize: none;
-}
-.form input[type="submit"],
-.form input[type="button"] {
-  background: #f14c44;
-  border: none;
-  padding: 10px 20px 10px 20px;
-  border-radius: 3px;
-  color: #fef6e7;
-}
-.form input[type="submit"]:hover,
-.form input[type="button"]:hover {
-  background: #6b9fff;
-  color: #fff;
+
+.radio {
+  display: flex;
 }
