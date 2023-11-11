@@ -40,7 +40,7 @@ p {
   cursor: pointer;
   width: 20rem;
   height: 3rem;
-  border-radius: 2rem;
+  border-radius: 0.5rem;
   background-color: #fef6e7;
   border: none;
   font-size: 1.2rem;
@@ -76,23 +76,47 @@ p {
   transform: scale(1.05);
 }
 
+.modal {
+  background-color: #33333373;
+}
+
 .form {
-  max-width: 400px;
+  border: 1px solid black;
+  max-width: 500px;
+  max-height: 500px;
   margin: auto;
+  padding: 2.5rem;
+  background-color: #fef6e7;
+  border-left: 0.5rem solid #f14c44;
+  color: black;
 }
 
 .form-section {
   margin-bottom: 15px;
 }
 
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
 label {
+  font-size: 1.25rem;
   display: block;
   margin-bottom: 5px; /* Add some spacing between labels and inputs */
 }
 
 input[type="text"] {
   width: calc(100% - 10px); /* Adjust the width based on your needs */
-  padding: 5px;
+  padding: 10px;
 }
 
 input[type="radio"] {
@@ -126,6 +150,27 @@ input[type="radio"]:checked::before {
   background-color: #333;
 }
 
+.radio-choice {
+  display: flex;
+  align-items: start;
+  margin-right: 0.5rem;
+}
+
 .radio {
   display: flex;
+}
+
+.submit {
+  width: 8rem;
+  height: 2rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #f14c44;
+  color: #fef6e7;
+  font-size: 1.1rem;
+  transition: all 0.5s;
+}
+
+.submit:hover {
+  transform: scale(1.1);
 }
