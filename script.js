@@ -37,11 +37,6 @@ function Book(title, author, numPages, readStatus) {
   this.author = author;
   this.numPages = numPages;
   this.readStatus = readStatus;
-  this.info = function () {
-    return `${title} by ${author}, ${numPages}, ${
-      readStatus === "yes" ? "have read" : "have not read yet."
-    }`;
-  };
 }
 
 const lordOfTheRings = new Book("Lord of the Rings", "JR Tolkien", 300, "yes");
@@ -54,8 +49,13 @@ const breakfastOfChampions = new Book(
 );
 const catsCradle = new Book("Cat's Cradle", "Kurt Vonnegut", 250, "yes");
 
+function updateLocalStorage() {
+  localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
+}
+
 function addBookToLibrary(book) {
   myLibrary.push(book);
+  updateLocalStorage();
 }
 
 addBookToLibrary(lordOfTheRings);
@@ -78,6 +78,7 @@ function renderBook(book) {
   author.textContent = book.author;
   pages.textContent = book.numPages;
   readStatus.textContent = book.readStatus === "yes" ? "Read" : "Not Read";
+
   readStatus.classList.add("button");
   deleteButton.textContent = "Delete";
   deleteButton.classList.add("button");
@@ -90,7 +91,7 @@ function renderBook(book) {
   bookContainer.appendChild(readStatus);
   bookContainer.appendChild(deleteButton);
 
-  readStatus.addEventListener("click", function () {
+  function toggleReadStatus() {
     if (book.readStatus === "yes") {
       book.readStatus = "no";
       readStatus.textContent = "Not Read";
@@ -98,6 +99,10 @@ function renderBook(book) {
       book.readStatus = "yes";
       readStatus.textContent = "Read";
     }
+  }
+
+  readStatus.addEventListener("click", function () {
+    toggleReadStatus();
   });
 }
 
@@ -135,6 +140,33 @@ submitButton.addEventListener("click", function (e) {
   modal.style.display = "none";
 });
 
-myLibrary.forEach((book) => {
-  renderBook(book);
+// myLibrary.forEach((book) => {
+//   renderBook(book);
+// });
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Check if there's data in local storage
+  const storedLibrary = localStorage.getItem("myLibrary");
+  console.log(storedLibrary);
+
+  if (storedLibrary) {
+    myLibrary.length = 0; // Clear the existing library
+    const parsedLibrary = JSON.parse(storedLibrary);
+    console.log(parsedLibrary);
+    parsedLibrary.forEach((bookData) => {
+      const book = new Book(
+        bookData.title,
+        bookData.author,
+        bookData.numPages,
+        bookData.readStatus
+      );
+      book.bookId = bookData.bookId;
+      myLibrary.push(book);
+    });
+
+    // Render books from the retrieved library
+    myLibrary.forEach((book) => {
+      renderBook(book);
+    });
+  }
 });
