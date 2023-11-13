@@ -64,6 +64,10 @@ p {
 }
 
 .book {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
   border-left: 0.5rem solid #f14c44;
   padding: 2rem;
   border-radius: 0.5rem;
@@ -98,25 +102,24 @@ p {
 
 .modal {
   display: none;
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
+  position: fixed;
+  z-index: 1;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 label {
   font-size: 1.25rem;
   display: block;
-  margin-bottom: 5px; /* Add some spacing between labels and inputs */
+  margin-bottom: 5px;
 }
 
 input[type="text"] {
-  width: calc(100% - 10px); /* Adjust the width based on your needs */
+  width: calc(100% - 10px);
   padding: 10px;
 }
 
@@ -125,7 +128,6 @@ input[type="radio"] {
   margin-right: 5px;
 }
 
-/* Clear the default radio button styles */
 input[type="radio"] {
   -webkit-appearance: none;
   -moz-appearance: none;
