@@ -89,6 +89,16 @@ function renderBook(book) {
   bookContainer.appendChild(pages);
   bookContainer.appendChild(readStatus);
   bookContainer.appendChild(deleteButton);
+
+  readStatus.addEventListener("click", function () {
+    if (book.readStatus === "yes") {
+      book.readStatus = "no";
+      readStatus.textContent = "Not Read";
+    } else {
+      book.readStatus = "yes";
+      readStatus.textContent = "Read";
+    }
+  });
 }
 
 function deleteBook() {
