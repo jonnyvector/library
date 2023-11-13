@@ -65,7 +65,6 @@ addBookToLibrary(catsCradle);
 
 function renderBook(book) {
   const bookContainer = document.createElement("div");
-  const buttonContainer = document.createElement("div");
   const title = document.createElement("h2");
   const author = document.createElement("p");
   const pages = document.createElement("p");
@@ -78,25 +77,25 @@ function renderBook(book) {
   title.textContent = book.title;
   author.textContent = book.author;
   pages.textContent = book.numPages;
-  readStatus.textContent = book.readStatus;
+  readStatus.textContent = book.readStatus === "yes" ? "Read" : "Not Read";
+  readStatus.classList.add("button");
   deleteButton.textContent = "Delete";
-  deleteButton.classList.add("delete-button");
+  deleteButton.classList.add("button");
   deleteButton.onclick = deleteBook;
 
   libraryContainer.appendChild(bookContainer);
   bookContainer.appendChild(title);
   bookContainer.appendChild(author);
   bookContainer.appendChild(pages);
-  bookContainer.appendChild(buttonContainer);
-  buttonContainer.appendChild(readStatus);
-  buttonContainer.appendChild(deleteButton);
+  bookContainer.appendChild(readStatus);
+  bookContainer.appendChild(deleteButton);
 }
 
 function deleteBook() {
-  const bookId = this.parentElement.parentElement.classList[1];
+  const bookId = this.parentElement.classList[1];
   const findBook = myLibrary.findIndex((element) => element.bookId == bookId);
   const delBook = myLibrary.splice(findBook, 1);
-  this.parentElement.parentElement.remove();
+  this.parentElement.remove();
 }
 
 submitButton.addEventListener("click", function (e) {
