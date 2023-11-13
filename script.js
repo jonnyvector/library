@@ -18,13 +18,10 @@ const submitButton = document.querySelector(".submit");
 const modal = document.querySelector(".modal");
 const openForm = document.querySelector(".open-form");
 const closeForm = document.querySelector(".close-form");
-console.log(modal, openForm);
 
 openForm.addEventListener("click", function () {
   modal.style.display = "block";
 });
-
-console.log(closeForm);
 
 closeForm.addEventListener("click", function () {
   modal.style.display = "none";
@@ -32,7 +29,10 @@ closeForm.addEventListener("click", function () {
 
 const myLibrary = [];
 
+Book.id = 0;
+
 function Book(title, author, numPages, readStatus) {
+  this.bookId = `book${++Book.id}`;
   this.title = title;
   this.author = author;
   this.numPages = numPages;
@@ -70,6 +70,7 @@ function renderBook(book) {
   const pages = document.createElement("p");
   const readStatus = document.createElement("button");
   bookContainer.className = "book";
+  bookContainer.classList.add(`${book.bookId}`);
   title.textContent = book.title;
   author.textContent = book.author;
   pages.textContent = book.numPages;
@@ -79,11 +80,21 @@ function renderBook(book) {
   bookContainer.appendChild(author);
   bookContainer.appendChild(pages);
   bookContainer.appendChild(readStatus);
+
+  const deleteButton = document.createElement("button");
+  deleteButton.textContent = "Delete";
+  deleteButton.classList.add("delete-button");
+  bookContainer.appendChild(deleteButton);
+  deleteButton.onclick = deleteBook;
 }
 
-myLibrary.forEach((book) => {
-  renderBook(book);
-});
+function deleteBook() {
+  const bookId = this.parentElement.classList[1];
+  console.log(bookId);
+  const findBook = myLibrary.findIndex((element) => element.bookId == bookId);
+  const delBook = myLibrary.splice(findBook, 1);
+  this.parentElement.remove();
+}
 
 submitButton.addEventListener("click", function (e) {
   if (title.value === "") return;
@@ -110,4 +121,8 @@ submitButton.addEventListener("click", function (e) {
   readStatus[0].checked = false;
   readStatus[1].checked = false;
   modal.style.display = "none";
+});
+
+myLibrary.forEach((book) => {
+  renderBook(book);
 });
