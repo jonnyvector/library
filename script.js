@@ -39,16 +39,6 @@ function Book(title, author, numPages, readStatus) {
   this.readStatus = readStatus;
 }
 
-const lordOfTheRings = new Book("Lord of the Rings", "JR Tolkien", 300, "yes");
-const theHobbit = new Book("The Hobbit", "JR Tolkien", 300, "no");
-const breakfastOfChampions = new Book(
-  "Breakfast of Champions",
-  "Kurt Vonnegut",
-  200,
-  "yes"
-);
-const catsCradle = new Book("Cat's Cradle", "Kurt Vonnegut", 250, "yes");
-
 function updateLocalStorage() {
   localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
 }
@@ -57,11 +47,6 @@ function addBookToLibrary(book) {
   myLibrary.push(book);
   updateLocalStorage();
 }
-
-addBookToLibrary(lordOfTheRings);
-addBookToLibrary(theHobbit);
-addBookToLibrary(breakfastOfChampions);
-addBookToLibrary(catsCradle);
 
 function renderBook(book) {
   const bookContainer = document.createElement("div");
@@ -110,6 +95,7 @@ function deleteBook() {
   const bookId = this.parentElement.classList[1];
   const findBook = myLibrary.findIndex((element) => element.bookId == bookId);
   const delBook = myLibrary.splice(findBook, 1);
+  updateLocalStorage();
   this.parentElement.remove();
 }
 
@@ -139,10 +125,6 @@ submitButton.addEventListener("click", function (e) {
   readStatus[1].checked = false;
   modal.style.display = "none";
 });
-
-// myLibrary.forEach((book) => {
-//   renderBook(book);
-// });
 
 document.addEventListener("DOMContentLoaded", function () {
   // Check if there's data in local storage
