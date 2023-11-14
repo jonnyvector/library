@@ -19,7 +19,18 @@ const modal = document.querySelector(".modal");
 const openForm = document.querySelector(".open-form");
 const closeForm = document.querySelector(".close-form");
 
-const colors = ["#D83F31", "#E9B824", "#EE9322", "#219C90", "#26577C"];
+const colors = [
+  "#E9B824",
+  "#EE9322",
+  "#219C90",
+  "#26577C",
+  "#A2678A",
+  "#321E1E",
+  "#116D6E",
+  "#4E3636",
+  "#001524",
+  "#2D4356",
+];
 
 openForm.addEventListener("click", function () {
   modal.style.display = "block";
@@ -57,15 +68,15 @@ function renderBook(book) {
   const pages = document.createElement("p");
   const readStatus = document.createElement("button");
   const deleteButton = document.createElement("button");
-  const randomNumber = Math.floor(Math.random() * 6);
+  const randomNumber = Math.floor(Math.random() * 10);
 
   bookContainer.className = "book";
   bookContainer.classList.add(`${book.bookId}`);
   bookContainer.style.backgroundColor = colors[randomNumber];
 
   title.textContent = book.title;
-  author.textContent = book.author;
-  pages.textContent = book.numPages;
+  author.textContent = `by ${book.author}`;
+  pages.textContent = `${book.numPages} Pages`;
   readStatus.textContent = book.readStatus === "yes" ? "Read" : "Not Read";
 
   readStatus.classList.add("button");
