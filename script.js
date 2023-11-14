@@ -9,6 +9,7 @@ const openForm = document.querySelector(".open-form");
 const closeForm = document.querySelector(".close-form");
 
 const colors = [
+  "#f14c44",
   "#E9B824",
   "#EE9322",
   "#219C90",
@@ -19,6 +20,7 @@ const colors = [
   "#4E3636",
   "#001524",
   "#2D4356",
+  "#008170",
 ];
 
 openForm.addEventListener("click", function () {
@@ -57,11 +59,11 @@ function renderBook(book) {
   const pages = document.createElement("p");
   const readStatus = document.createElement("button");
   const deleteButton = document.createElement("button");
-  const randomNumber = Math.floor(Math.random() * 10);
+  const randomNumber = Math.floor(Math.random() * 11);
 
   bookContainer.className = "book";
   bookContainer.classList.add(`${book.bookId}`);
-  bookContainer.style.backgroundColor = colors[randomNumber];
+  bookContainer.style.borderLeft = `10px solid ${colors[randomNumber]}`;
 
   title.textContent = book.title;
   author.textContent = `by ${book.author}`;
@@ -72,6 +74,8 @@ function renderBook(book) {
   deleteButton.textContent = "Delete";
   deleteButton.classList.add("button");
   deleteButton.onclick = deleteBook;
+  readStatus.style.backgroundColor = colors[randomNumber];
+  deleteButton.style.backgroundColor = colors[randomNumber];
 
   libraryContainer.appendChild(bookContainer);
   bookContainer.appendChild(title);
