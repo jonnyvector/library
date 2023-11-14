@@ -19,6 +19,8 @@ const modal = document.querySelector(".modal");
 const openForm = document.querySelector(".open-form");
 const closeForm = document.querySelector(".close-form");
 
+const colors = ["#D83F31", "#E9B824", "#EE9322", "#219C90", "#26577C"];
+
 openForm.addEventListener("click", function () {
   modal.style.display = "block";
 });
@@ -55,9 +57,11 @@ function renderBook(book) {
   const pages = document.createElement("p");
   const readStatus = document.createElement("button");
   const deleteButton = document.createElement("button");
+  const randomNumber = Math.floor(Math.random() * 6);
 
   bookContainer.className = "book";
   bookContainer.classList.add(`${book.bookId}`);
+  bookContainer.style.backgroundColor = colors[randomNumber];
 
   title.textContent = book.title;
   author.textContent = book.author;
